@@ -1,0 +1,27 @@
+# GitLab runner script to automatically send the new version from Git to the Raspberry Pi where the actual app is running
+stages:
+    - git-pull
+    - deploy
+
+git-pull:
+    stage: git-pull
+    script:
+        - whoami
+        - cd /home/errorscanner/js_scan_all_servers_for_errors
+        - git restore .
+        - git checkout "$CI_COMMIT_BRANCH"
+        - git pull
+        - npm install
+    tags:
+        - may
+
+deploy:
+    stage: deploy
+    script:
+        - cd /home/errorscanner/js_scan_all_servers_for_errors
+        - npm run build
+        - cp -r dist/. /etc/protieto/errorscanner/html
+    rules:
+        - if: $DEPLOY == "true"
+    tags:
+        - may
