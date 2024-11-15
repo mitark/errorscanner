@@ -2,7 +2,7 @@ import fs from "fs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
-// haetaan __dirname manuaalisesti koska ES6 path moduuli ei jostain syystä sisällä __dirnamee
+// search for __dirname manually because ES6 path module does not contain __dirname for some reason
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const resultsDir = path.join(__dirname, "/results");
