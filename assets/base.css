@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+:root {
+  --color-white: #ffffff;
+  --color-soft-black: #2e2e2e;
+  --color-blue-1: #bfdbff;
+  --color-blue-2: #afcded;
+  --color-blue-3: #7aa7e1;
+
+  --standard-radius: 10px;
+  --standard-shadow: rgba(99, 99, 99, 0.1) 0px 2px 2px 0px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-image: url("https://t3.ftcdn.net/jpg/04/56/00/16/360_F_456001627_vYt7ZFjxEQ1sshme67JAXorKRPo8gsfN.jpg");
+    --color-background: #fff8ff;
+    --color-background-secondary: #f2e9f2;
+    --color-text: #2e2e2e;
+    --sidebar-color: rgba(230, 230, 230, 0.4);
+    --rightside-color: rgba(247, 245, 248);
+    --circle-background: #e1d7e5;
+    --circle-text: rgba(247, 245, 248);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-image: url("https://img.freepik.com/free-vector/dark-gradient-background-with-copy-space_53876-99548.jpg");
+    --color-background: rgba(22, 22, 22, 1);
+    --color-background-secondary: rgba(32, 33, 37, 1);
+    --color-text: #fafafa;
+    --sidebar-color: rgba(100, 100, 100, 0.4);
+    --rightside-color: rgba(12, 13, 13, 1);
+    --circle-background: #b2b2b2;
+    --circle-text: rgba(12, 13, 13, 1);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+body {
+  /* color-scheme: dark; */
+  margin: 0px;
+  color: var(--color-soft-black);
+  background: var(--rightside-color);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.5;
+  font-family: "Roboto Mono", monospace;
+  font-size: small;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text);
+}
+
+p {
+  margin: 0;
+}
