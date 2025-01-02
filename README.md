@@ -26,7 +26,11 @@ js_scan_all_servers_for_errors
         ├── LogExpandables.vue
         └── TabBar.vue
 ```
-(English below)
+(English project desrciption can be found below)
+
+Lyhyesti:
+
+Tehtiin erään yrityksen sovellukselle errorscanner, eli nettisivu, johon sovelluksen errorlogit julkaistiin. Nettisivun toiminta kirjoitettiin JavaScriptillä, joka ajettiin Raspberry Pi 5 -tietokoneen Apache-palvelimella.
 
 Tavoite:
 
@@ -36,8 +40,7 @@ helposti tutkia errorin alkuperää ja ratkaista ongelmia nopeammin.
 
 Tiivistelmä:
 
-Palvelimilla oleva Java-koodi määrittää mitä palautetaan, kun JavaScript
-useErrorScanner.js pyytää palvelimen lokitietoja. Sen jälkeen lokia ja
+Sovellus pyytää ensin kaikilta palvelimilta lokitietoja. Tämä tapahtuu siten, että palvelimien REST-serveriltä kutsutaan erästä Java-luokkaa, joka palauttaa kyseisen palvelimen viimeisimmät lokit. Sen jälkeen lokia ja
 muuta informaatiota käsitellään ja olennaiset tiedot tulostetaan
 nettisivulle, jota ylläpitää Apache-palvelin.
 
@@ -77,13 +80,17 @@ tietoihin, nopeuttaen käyttöä.
 
 ________________________________________________________________________________________________________
 
+In short:
+
+Programmed a web application with JavaScript for a company. The errorscanner gathers errors from the company's app to a website which was hosted on a Raspberry Pi 5 -computer with an Apache server.
+
 Objective:
 
 To communicate about the errors on the app's server logs effectively and in a clear way. To create a tool to easily inspect where the error came from and to help solve issues more quickly.
 
 The app in a nutshell:
 
-Every server has a Java code which determines the return value, when the JavaScript code useErrorScanner.js requests the log from that server. After that the log and other data is processed and the program extracts essential information to print on to the website. The website is hosted on an Apache server.
+First, the errorscanner gets log records from all the servers. In order to do that, it sends a request to a REST-server. The REST-server contains a Java class that returns the latest log lines on that specific server. This is done to all the servers that need to be scanned for errors. After that the log and other data is processed and the program extracts essential information to print on to the website. The website is hosted on an Apache server.
 
 In addition to the website the app sends a message every day to the office Slack channel (useSlackChannel.js). In that message it sums up the current status of the server and informs of the current available disk space. A message is sent also in case one of the servers is out of reach.
 
